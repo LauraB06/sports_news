@@ -83,11 +83,11 @@ class LoginSignInPage extends StatelessWidget {
                       ),
                       Column(
                         children: <Widget>[
-                          GenericButton(
-                            title: 'Entrar com facebook',
-                            variant: ButtonVariant.outlineLight,
-                            onPressed: _loginWithFacebook,
-                          ),
+                          // GenericButton(
+                          //   title: 'Entrar com facebook',
+                          //   variant: ButtonVariant.outlineLight,
+                          //   onPressed: _loginWithFacebook,
+                          // ),
                           const SizedBox(height: 24),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 32),

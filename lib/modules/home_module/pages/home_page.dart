@@ -30,10 +30,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     bloc = BlocProvider.of<HomeBloc>(context);
 
-
     return Scaffold(
       appBar: SolidAppBar(
-        title: 'Mesa News',
+        title: 'Sports News',
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.filter_list, color: Colors.white),
@@ -90,6 +89,8 @@ class HomePage extends StatelessWidget {
   }
 
   void _openArticle(ArticleModel model, BuildContext context) {
+    BlocProvider.of<HomeBloc>(context)
+        .add(HomeBlocEventArticleSelected(selectedArticle: model));
     Navigator.of(context).push(
       MaterialPageRoute<NewsPage>(
         builder: (BuildContext context) => NewsPage(
@@ -170,7 +171,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _imageFromNetwork(String url) {
-    if(url == null) return Container();
+    if (url == null) return Container();
     return Image.network(
       url,
       fit: BoxFit.cover,

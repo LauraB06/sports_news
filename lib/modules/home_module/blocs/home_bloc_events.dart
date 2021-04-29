@@ -22,3 +22,11 @@ class HomeBlocEventFilter implements HomeBlocEvent {
   final List<DateTime> time;
   final bool onlyHighlighted;
 }
+
+class HomeBlocEventArticleSelected implements HomeBlocEvent {
+  const HomeBlocEventArticleSelected({
+    @required this.selectedArticle,
+  });
+
+  final ArticleModel selectedArticle;
+}

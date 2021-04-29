@@ -16,6 +16,7 @@ class HomeBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
   List<ArticleModel> articles = <ArticleModel>[];
   List<ArticleModel> highlights = <ArticleModel>[];
   List<ArticleModel> userHighlighted = <ArticleModel>[];
+  List<String> viewedArticles = <String>[];
 
   @override
   Stream<HomeBlocState> mapEventToState(HomeBlocEvent event) async* {
@@ -48,7 +49,9 @@ class HomeBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
         try {
           final List<ArticleModel> newArticles =
               await newsService.getMoreNews();
-          articles.addAll(newArticles);
+          List<ArticleModel> filteredArticles = newArticles
+              .where((article) => !this.viewedArticles.contains(article.url));
+          articles.addAll(filteredArticles);
 
           yield HomeBlocStateLoaded(
             articles: articles,
@@ -64,6 +67,21 @@ class HomeBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
             rethrow;
           }
         }
+        break;
+
+      case HomeBlocEventArticleSelected:
+        HomeBlocEventArticleSelected eventArticleSelected =
+            event as HomeBlocEventArticleSelected;
+        this.viewedArticles.add(eventArticleSelected.selectedArticle.url);
+
+        List<ArticleModel> filteredArticles = articles
+            .where((article) => !this.viewedArticles.contains(article.url))
+            .toList();
+        yield HomeBlocStateLoaded(
+            articles: filteredArticles,
+            highlights: highlights,
+            highlightedArticles: userHighlighted,
+            viewedArticles: this.viewedArticles);
         break;
 
       case HomeBlocEventFilter:

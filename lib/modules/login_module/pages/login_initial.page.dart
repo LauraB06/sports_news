@@ -38,11 +38,11 @@ class LoginInitialPage extends StatelessWidget {
             ),
             Column(
               children: <Widget>[
-                GenericButton(
-                  title: 'Entrar com facebook',
-                  onPressed: _doSignInWithFacebook,
-                  variant: ButtonVariant.outlineLight,
-                ),
+                // GenericButton(
+                //   title: 'Entrar com facebook',
+                //   onPressed: _doSignInWithFacebook,
+                //   variant: ButtonVariant.outlineLight,
+                // ),
                 GenericButton(
                   title: 'Entrar com e-mail',
                   variant: ButtonVariant.outlineDark,

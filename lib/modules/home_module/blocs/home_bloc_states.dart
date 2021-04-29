@@ -10,11 +10,13 @@ class HomeBlocStateLoaded implements HomeBlocState {
     @required this.articles,
     @required this.highlights,
     this.highlightedArticles = const <ArticleModel>[],
+    this.viewedArticles = const <String>[],
   });
 
   final List<ArticleModel> articles;
   final List<ArticleModel> highlights;
   final List<ArticleModel> highlightedArticles;
+  final List<String> viewedArticles;
 }
 
 class HomeBlocStateError implements HomeBlocState {}
