@@ -7,7 +7,7 @@ import 'package:sports_news/modules/home_module/home_provider.dart';
 import 'package:sports_news/modules/home_module/pages/home_page.dart';
 import 'package:sports_news/modules/login_module/blocs/login_bloc_states.dart';
 import 'package:sports_news/modules/login_module/pages/login_initial.page.dart';
-import 'package:sports_news/shared/repositories/heroku/login_repository_heroku.dart';
+import 'package:sports_news/shared/repositories/news_api/login_repository_news_api.dart';
 import 'package:sports_news/shared/services/login_service.dart';
 
 import 'blocs/login_bloc.dart';
@@ -18,7 +18,7 @@ class LoginProvider extends StatelessWidget {
     return BlocProvider<LoginBloc>(
       create: (BuildContext context) => LoginBloc(
         loginService: LoginService(
-          loginRepository: LoginRepositoryHeroku(
+          loginRepository: LoginRepositoryNewsApi(
             auth: GetIt.instance.get<Auth>(),
           ),
         ),

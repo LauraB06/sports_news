@@ -25,17 +25,17 @@ void main() {
   );
 
   Catcher(
-    rootWidget: MesaApp(),
+    rootWidget: NewsApp(),
     debugConfig: options,
   );
 
 }
 
-class MesaApp extends StatelessWidget {
+class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mesa News',
+      title: 'News App',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
         primaryColor: const Color(0xFFE5E5E5),
