@@ -25,16 +25,17 @@ void main() {
   );
 
   Catcher(
-    rootWidget: SportsApp(),
+    rootWidget: MesaApp(),
     debugConfig: options,
   );
+
 }
 
-class SportsApp extends StatelessWidget {
+class MesaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sports News',
+      title: 'Mesa News',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
         primaryColor: const Color(0xFFE5E5E5),

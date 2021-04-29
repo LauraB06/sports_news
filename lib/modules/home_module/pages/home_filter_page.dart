@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
+import 'package:intl/intl.dart';
 import 'package:sports_news/modules/home_module/blocs/home_bloc.dart';
 import 'package:sports_news/modules/home_module/blocs/home_bloc_events.dart';
 import 'package:sports_news/shared/widgets/solid_app_bar_widget.dart';
-import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
-import 'package:intl/intl.dart';
 
 class HomeFilterPage extends StatefulWidget {
 

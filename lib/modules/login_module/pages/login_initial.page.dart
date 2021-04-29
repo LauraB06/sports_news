@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sports_news/modules/login_module/blocs/login_bloc.dart';
 import 'package:sports_news/modules/login_module/pages/login_sign_in.page.dart';
 import 'package:sports_news/modules/login_module/pages/login_sign_up.page.dart';
@@ -28,9 +27,12 @@ class LoginInitialPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SvgPicture.asset('assets/logo 1.svg'),
-                  const SizedBox(height: 20),
-                  SvgPicture.asset('assets/NEWS.svg', color: Colors.white),
+                  ConstrainedBox(
+                    constraints: BoxConstraints.tightFor(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    child: Image.asset('assets/sports_news_logo.png'),
+                  ),
                 ],
               ),
             ),

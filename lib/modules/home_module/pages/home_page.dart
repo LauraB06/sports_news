@@ -30,9 +30,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     bloc = BlocProvider.of<HomeBloc>(context);
 
+
     return Scaffold(
       appBar: SolidAppBar(
-        title: 'Sports News',
+        title: 'Mesa News',
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.filter_list, color: Colors.white),
