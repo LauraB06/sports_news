@@ -34,6 +34,7 @@ class HomeBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
           );
         } catch (e) {
           if (e is DioError) {
+            print(e);
             Catcher.reportCheckedError(
                 e.response.data['message'] ?? e.message, null);
             yield HomeBlocStateError();

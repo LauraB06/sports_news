@@ -20,10 +20,15 @@ class NewsService {
     List<Map<String, dynamic>> results = await Future.wait(
       <Future<Map<String, dynamic>>>[
         newsRepository.getHighlights(),
-        newsRepository.getNews(),
+        // newsRepository.getNews(),
       ],
     );
 
+    print(results);
+
+    return HomeArticles(articles: [], highlights: []);
+
+    /*
     if (results.length == 2) {
       final Map<String, dynamic> highlightResult = results[0];
       final Map<String, dynamic> articleResult = results[1];
@@ -53,6 +58,7 @@ class NewsService {
     } else {
       return null;
     }
+    */
   }
 
   Future<List<ArticleModel>> getMoreNews() async {

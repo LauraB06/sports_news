@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:sports_news/core/auth.dart';
 import 'package:sports_news/modules/home_module/blocs/home_bloc.dart';
 import 'package:sports_news/modules/home_module/pages/home_page.dart';
-import 'package:sports_news/shared/repositories/heroku/news_repository_heroku.dart';
+import 'package:sports_news/shared/repositories/news_api/news_repository_news_api.dart';
 import 'package:sports_news/shared/services/news_service.dart';
 
 import 'blocs/home_bloc_events.dart';
@@ -16,7 +16,7 @@ class HomeProvider extends StatelessWidget {
     return BlocProvider<HomeBloc>(
       create: (BuildContext context) => HomeBloc(
         newsService: NewsService(
-          newsRepository: NewsRepositoryHeroku(
+          newsRepository: NewsRepositoryNewsApi(
             auth: GetIt.instance.get<Auth>(),
           ),
         ),

@@ -1,16 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sports_news/core/auth.dart';
 import 'package:sports_news/shared/repositories/abstract/news_repository.dart';
-import 'package:sports_news/shared/repositories/heroku/base_endpoint.dart';
+import 'package:sports_news/shared/repositories/news_api/base_endpoint.dart';
 
 /// NEEDS REWORK
 class NewsRepositoryNewsApi implements NewsRepository {
-  NewsRepositoryHeroku({@required this.auth}) {
+  NewsRepositoryNewsApi({@required this.auth}) {
     dio = Dio(
       BaseOptions(
-        baseUrl: BaseEndpointHeroku().baseEndpoint,
-        headers: <String, dynamic>{'Authorization': 'Bearer ' + auth.token},
+        baseUrl: BaseEndpointNewsApi().baseEndpoint,
+        // headers: <String, dynamic>{'Authorization': 'Bearer ' + auth.token},
       ),
     );
   }
@@ -21,10 +22,18 @@ class NewsRepositoryNewsApi implements NewsRepository {
   @override
   Future<Map<String, dynamic>> getHighlights() async {
     final Response<Map<String, dynamic>> result = await dio.get(
-      '/v1/client/news/highlights',
+      'top-headlines',
+      queryParameters: {
+        'country': 'us',
+        'category': 'business',
+        'apiKey': GetIt.I.get<Auth>().token,
+      },
     );
 
-    return result.statusCode == 200 ? result.data : null;
+    print('result: ${result.data}');
+
+    return result.data;
+    // return result.statusCode == 200 ? result.data : null;
   }
 
   @override
@@ -34,14 +43,25 @@ class NewsRepositoryNewsApi implements NewsRepository {
     String publishedAt,
   }) async {
     final Response<Map<String, dynamic>> result = await dio.get(
-      '/v1/client/news',
+      '/everything',
+      queryParameters: <String, dynamic>{
+        'q': 'tesla',
+        'from': '2021-03-29',
+        'sortBy': 'publishedAt',
+        'apiKey': GetIt.I.get<Auth>().token,
+      },
+      /*
       queryParameters: <String, dynamic>{
         'current_page': currentPage,
         'per_page': perPage,
         'published_at': publishedAt,
       },
+      */
     );
 
-    return result.statusCode == 200 ? result.data : null;
+    print(result.data);
+    return result.data;
+
+    // return result.statusCode == 200 ? result.data : null;
   }
 }
