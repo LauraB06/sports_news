@@ -46,6 +46,7 @@ class NewsRepositoryNewsApi implements NewsRepository {
         'from': '2021-03-29',
         'sortBy': 'publishedAt',
         'apiKey': GetIt.I.get<Auth>().token,
+        'pageSize': 60,
       },
       /*
       queryParameters: <String, dynamic>{
