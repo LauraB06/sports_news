@@ -39,7 +39,7 @@ class NewsPageState extends State<NewsPage> {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         children: <Widget>[
-          _imageFromNetwork(widget.model.imageUrl),
+          _imageFromNetwork(widget.model.urlToImage),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

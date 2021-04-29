@@ -9,26 +9,26 @@ part of 'article_model.dart';
 ArticleModel _$ArticleModelFromJson(Map<String, dynamic> json) {
   return ArticleModel(
     title: json['title'] as String,
+    author: json['author'] as String,
     description: json['description'] as String,
     content: json['content'] as String,
-    author: json['author'] as String,
-    publishedAt: json['published_at'] == null
+    publishedAt: json['publishedAt'] == null
         ? null
-        : DateTime.parse(json['published_at'] as String),
+        : DateTime.parse(json['publishedAt'] as String),
     highlight: json['highlight'] as bool,
     url: json['url'] as String,
-    imageUrl: json['image_url'] as String,
+    urlToImage: json['urlToImage'] as String,
   );
 }
 
 Map<String, dynamic> _$ArticleModelToJson(ArticleModel instance) =>
     <String, dynamic>{
+      'author': instance.author,
       'title': instance.title,
       'description': instance.description,
-      'content': instance.content,
-      'author': instance.author,
-      'published_at': instance.publishedAt?.toIso8601String(),
-      'highlight': instance.highlight,
       'url': instance.url,
-      'image_url': instance.imageUrl,
+      'urlToImage': instance.urlToImage,
+      'publishedAt': instance.publishedAt?.toIso8601String(),
+      'content': instance.content,
+      'highlight': instance.highlight,
     };

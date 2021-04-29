@@ -114,7 +114,7 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 120,
                 width: 120,
-                child: _imageFromNetwork(model.imageUrl),
+                child: _imageFromNetwork(model.urlToImage),
               ),
               Expanded(
                 child: Column(
@@ -170,6 +170,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _imageFromNetwork(String url) {
+    if(url == null) return Container();
     return Image.network(
       url,
       fit: BoxFit.cover,
@@ -203,7 +204,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             AspectRatio(
               aspectRatio: 6 / 2.2,
-              child: _imageFromNetwork(model.imageUrl),
+              child: _imageFromNetwork(model.urlToImage),
             ),
             _saveArticleWidget(model, context, expanded: true),
             Align(

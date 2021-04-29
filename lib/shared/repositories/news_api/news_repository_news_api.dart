@@ -30,10 +30,7 @@ class NewsRepositoryNewsApi implements NewsRepository {
       },
     );
 
-    print('result: ${result.data}');
-
-    return result.data;
-    // return result.statusCode == 200 ? result.data : null;
+    return result.statusCode == 200 ? result.data : null;
   }
 
   @override
@@ -59,9 +56,9 @@ class NewsRepositoryNewsApi implements NewsRepository {
       */
     );
 
-    print(result.data);
-    return result.data;
+    // print(result.data);
+    // return result.data;
 
-    // return result.statusCode == 200 ? result.data : null;
+    return result.statusCode == 200 ? result.data : null;
   }
 }

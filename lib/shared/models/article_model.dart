@@ -7,30 +7,30 @@ part 'article_model.g.dart';
 class ArticleModel {
   const ArticleModel({
     @required this.title,
+    @required this.author,
     @required this.description,
     @required this.content,
-    @required this.author,
     @required this.publishedAt,
     @required this.highlight,
     @required this.url,
-    @required this.imageUrl,
+    @required this.urlToImage,
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) => _$ArticleModelFromJson(json);
 
+  final String author;
   final String title;
   final String description;
-  final String content;
-  final String author;
-
-  @JsonKey(name: 'published_at')
-  final DateTime publishedAt;
-
-  final bool highlight;
   final String url;
 
-  @JsonKey(name: 'image_url')
-  final String imageUrl;
+  final String urlToImage;
+
+  @JsonKey(name: 'publishedAt')
+  final DateTime publishedAt;
+  final String content;
+
+
+  final bool highlight;
 
   Map<String, dynamic> toJson() => _$ArticleModelToJson(this);
 }

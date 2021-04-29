@@ -20,36 +20,35 @@ class NewsService {
     List<Map<String, dynamic>> results = await Future.wait(
       <Future<Map<String, dynamic>>>[
         newsRepository.getHighlights(),
-        // newsRepository.getNews(),
+        newsRepository.getNews(),
       ],
     );
 
-    print(results);
+    // print(results);
 
-    return HomeArticles(articles: [], highlights: []);
+    // return HomeArticles(articles: [], highlights: []);
 
-    /*
     if (results.length == 2) {
       final Map<String, dynamic> highlightResult = results[0];
       final Map<String, dynamic> articleResult = results[1];
 
-      _currentPage += 1;
+      // _currentPage += 1;
 
-      final PaginationModel pagination = PaginationModel.fromJson(
-        articleResult['pagination'] as Map<String, dynamic>,
-      );
+      // final PaginationModel pagination = PaginationModel.fromJson(
+        // articleResult['pagination'] as Map<String, dynamic>,
+      // );
 
-      _totalItems = pagination.totalItems;
-      _totalPages = pagination.totalPages;
+      // _totalItems = pagination.totalItems;
+      // _totalPages = pagination.totalPages;
 
       final List<ArticleModel> highlights =
-          (highlightResult['data'] as List<dynamic>)
+          (highlightResult['articles'] as List<dynamic>)
               .map((dynamic model) =>
                   ArticleModel.fromJson(model as Map<String, dynamic>))
               .toList();
 
       final List<ArticleModel> articles =
-          (articleResult['data'] as List<dynamic>)
+          (articleResult['articles'] as List<dynamic>)
               .map((dynamic model) =>
                   ArticleModel.fromJson(model as Map<String, dynamic>))
               .toList();
@@ -58,7 +57,6 @@ class NewsService {
     } else {
       return null;
     }
-    */
   }
 
   Future<List<ArticleModel>> getMoreNews() async {
