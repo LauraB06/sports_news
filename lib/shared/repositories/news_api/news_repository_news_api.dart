@@ -24,8 +24,8 @@ class NewsRepositoryNewsApi implements NewsRepository {
     final Response<Map<String, dynamic>> result = await dio.get(
       'top-headlines',
       queryParameters: {
-        'country': 'us',
-        'category': 'business',
+        'country': 'br',
+        'category': 'sports',
         'apiKey': GetIt.I.get<Auth>().token,
       },
     );
@@ -40,13 +40,14 @@ class NewsRepositoryNewsApi implements NewsRepository {
     String publishedAt,
   }) async {
     final Response<Map<String, dynamic>> result = await dio.get(
-      '/everything',
+      '/top-headlines',
       queryParameters: <String, dynamic>{
-        'q': 'tesla',
-        'from': '2021-03-29',
-        'sortBy': 'publishedAt',
+        // 'from': '2021-03-29',
+        'country': 'br',
+        'category': 'sports',
+        // 'sortBy': 'publishedAt',
         'apiKey': GetIt.I.get<Auth>().token,
-        'pageSize': 60,
+        // 'pageSize': 60,
       },
       /*
       queryParameters: <String, dynamic>{

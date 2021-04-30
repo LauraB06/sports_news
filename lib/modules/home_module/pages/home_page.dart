@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
           : ListView(
               physics: const BouncingScrollPhysics(),
               children: <Widget>[
-                _highlightArea(context),
+                // _highlightArea(context),
                 _lastNewsArea(context),
               ],
             ),
@@ -211,7 +211,7 @@ class HomePage extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                model.title,
+                model.title ?? 'Sem titulo',
                 style: GoogleFonts.roboto(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
@@ -225,7 +225,7 @@ class HomePage extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                model.description,
+                model.description ?? 'Sem descrição',
                 style: GoogleFonts.roboto(
                   fontSize: 13,
                   fontWeight: FontWeight.w400,
